@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✧ Geeth's Design Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+
+        /* ==================================== */
+        /* 1. Typography and Global Base Styles */
+        /* ==================================== */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif; 
+            background: #f8f7f5; 
+            color: #333333;
+            font-weight: 300;
+        }
+
+        /* NEW: Figma-style Cursor (Updated) */
+        html, body {
+            cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'><path fill='%23000000' stroke='%23FFFFFF' stroke-width='2' d='M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.85a.5.5 0 0 0-.85.35Z'></path></svg>"), auto;
+        }
+
+        a, a:hover, .project-link, button, [role="button"], [onclick] {
+            cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24'><path fill='%23FFFFFF' stroke='%23000000' stroke-width='2' stroke-linejoin='round' d='M10 11V8.99c0-.88.59-1.64 1.44-1.86h.05A1.99 1.99 0 0 1 14 9.05V12v-2c0-.88.6-1.65 1.46-1.87h.05A1.98 1.98 0 0 1 18 10.06V13v-1.94a2 2 0 0 1 1.51-1.94h0A2 2 0 0 1 22 11.06V14c0 .6-.08 1.27-.21 1.97a7.96 7.96 0 0 1-7.55 6.48 54.98 54.98 0 0 1-4.48 0 7.96 7.96 0 0 1-7.55-6.48C2.08 15.27 2 14.59 2 14v-1.49c0-1.11.9-2.01 2.01-2.01h0a2 2 0 0 1 2.01 2.03l-.01.97v-10c0-1.1.9-2 2-2h0a2 2 0 0 1 2 2V11Z'></path></svg>"), auto !important;
+        }
+        
+        p, h1, h2, h3, h4, h5, h6, span, .font-old-standard, .project-subtitle, .project-title {
+            cursor: text;
+        }
+
+        a *, .project-link *, button *, [role="button"] *, [onclick] * {
+            cursor: inherit !important;
+        }
+
+        ::selection {
+            background: #f9dbf7; 
+            color: #000; 
+        }
+        ::-moz-selection { 
+            background: #f9dbf7;
+            color: #000;
+        }
+
+        .font-bodoni {
+            font-family: 'Bodoni Moda', serif;
+        }
+
+        .font-old-standard {
+            font-family: 'Old Standard TT', serif;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-load {
+            animation: fadeInUp 1.2s ease-out forwards; 
+            opacity: 0; 
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+
+        .hero-gradient {
+            background-color: #f8f7f5; 
+            background-image: 
+                linear-gradient(
+                    to bottom, 
+                    rgba(248, 247, 245, 0) 60%, 
+                    rgba(248, 247, 245, 1) 100%  
+                ),
+                radial-gradient(
+                    circle at 15% 15%,
+                    rgba(251, 194, 235, 0.75), 
+                    transparent 60%
+                ),
+                radial-gradient(
+                    circle at 75% 10%, 
+                    rgba(161, 140, 209, 0.65), 
+                    transparent 60%
+                );
+            
+            background-blend-mode: normal; 
+            background-repeat: no-repeat;
+        }
+        
+        .color-accent, .text-accent {
+            color: #7b8d8e; 
+        }
+        .bg-light-gray, .bg-card {
+            background-color: #eeeeee; 
+        }
+        .header-bg {
+             background-color: rgba(247, 247, 247, 1);
+        }
+        
+        .nav-link:hover {
+            color: #000;
+            opacity: 0.8;
+        }
+        
+        .project-link {
+            transition: all 0.3s ease;
+        }
+        .project-link:hover .project-title,
+        .project-link:hover .project-subtitle {
+             text-decoration: none;
+        }
+        
+        .project-link:hover .project-image {
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+<body id="top">
+
+    <!-- Floating Desktop Navigation -->
+    <nav id="desktop-nav-bar" class="fixed top-6 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] z-50 hidden md:flex justify-between items-center rounded-full py-4 transition-all duration-300 ease-in-out">
+        <div class="flex items-center space-x-4">
+            <a href="#top" class="text-black hover:text-accent font-light text-lg">✧ Geeth</a>
+            <!-- Desktop Tooltip 'About me' is active here via the 'title' attribute -->
+            <a href="javascript:void(0)" title="About me" class="text-black hover:text-accent bg-white/30 backdrop-blur-lg rounded-full p-2 flex items-center justify-center" aria-label="About Me">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                </svg>
+            </a>
+        </div>
+        
+        <div class="flex items-center space-x-8">
+            <a href="#projects" class="text-black hover:text-accent font-light text-lg hover:underline">My work ↗</a>
+            <a href="https://www.linkedin.com/in/geeth-chand/" class="text-black hover:text-accent font-light text-lg hover:underline" target="_blank">LinkedIn ↗</a>
+            <a href="javascript:void(0)" class="text-black hover:text-accent font-light text-lg bg-white/30 backdrop-blur-lg rounded-full py-2 px-5">Resume</a>
+        </div>
+    </nav>
+    
+    <!-- Mobile Top Left Quick Links (Visible only on mobile) -->
+    <div class="absolute top-6 left-6 z-50 flex md:hidden items-center">
+        <a href="javascript:void(0)" title="About me" class="text-black hover:text-accent bg-white/30 backdrop-blur-lg rounded-full p-2 flex items-center justify-center shadow-sm" aria-label="About Me">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+            </svg>
+        </a>
+    </div>
+
+    <!-- Mobile Top Right Quick Links (Visible only on mobile) -->
+    <div class="absolute top-6 right-6 z-50 flex md:hidden items-center">
+        <a href="https://www.linkedin.com/in/geeth-chand/" class="text-black hover:text-accent font-light text-base hover:underline" target="_blank">LinkedIn ↗</a>
+    </div>
+
+    <!-- HERO SECTION WRAPPER -->
+    <div class="hero-gradient">
+        <section class="min-h-[80vh] md:min-h-screen flex flex-col justify-center lg:justify-end pt-24 pb-12 md:pb-32 lg:pt-16 lg:pb-32">
+            <div class="max-w-7xl mx-auto px-6 sm:px-12 md:px-12 w-full py-0">
+                <div class="lg:flex lg:space-x-24">
+                    
+                    <div class="lg:w-1/2">
+                        <h1 class="text-2xl sm:text-3xl md:text-5xl font-light leading-snug mb-8 animate-on-load delay-1">
+                            Hello, I am Geeth<br class="hidden sm:inline" />
+                            <span class="font-old-standard font-normal italic inline-block mt-4 md:mt-6">Product design-Research, UI/UX.</span>
+                        </h1>
+                    </div>
+                    
+                    <div class="lg:w-1/2 mt-8 lg:mt-0 lg:pl-16">
+                        <p class="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed mb-8 md:mb-10 animate-on-load delay-2">
+                            Passionate about designing user-centered and intuitive experiences with a curious, growth oriented mindset and a deep sense of compassion!
+                        </p>
+                        <div class="flex items-center gap-6 md:gap-20 animate-on-load delay-3 flex-wrap">
+                            <a href="#projects" class="inline-block text-base sm:text-lg md:text-xl font-medium hover:underline">
+                                View my work ↗
+                            </a>
+                            <a href="javascript:void(0)" class="inline-block text-base sm:text-lg md:text-xl font-medium hover:underline">
+                                Resume ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-6 sm:px-12 md:px-12">
+
+        <div id="projects" class="relative mt-[-40px] pb-[40px] pointer-events-none"></div>
+
+        <section class="pt-4 pb-8 md:py-12 border-b border-gray-300">
+            <div class="flex space-x-6 text-3xl md:text-4xl">
+                <span class="color-accent font-semibold">My works</span>
+            </div>
+        </section>
+
+        <!-- Project Gallery Section -->
+        <section class="py-12 md:py-16">
+            <div class="space-y-16 md:space-y-24">
+                
+                <!-- Project 1 -->
+                <a href="https://www.behance.net/gallery/244257081/NOOBI-Enabling-AI-adoption-for-young-minds" class="project-link block">
+                    <div class="flex flex-col lg:flex-row-reverse lg:gap-12 lg:items-start">
+                        
+                        <div class="lg:w-1/2 h-56 sm:h-64 lg:h-80 mb-6 lg:mb-0 rounded-2xl overflow-hidden bg-gray-100">
+                            <!-- Change src to: ./assets/project1-thumbnail.jpg -->
+                            <img 
+                                src="./assets/case_study_1_thumbnail.png" 
+                                alt="Project 1 Thumbnail" 
+                                class="project-image w-full h-full object-cover transition-transform duration-500 ease-out"
+                            />
+                        </div>
+
+                        <div class="lg:w-1/2 lg:pt-4">
+                            <div class="space-y-1">
+                                <h3 class="project-title text-xl md:text-2xl font-medium">NOOBI - AI Device</h3>
+                                <p class="project-subtitle text-base md:text-lg text-accent mt-2">Enabling AI adoption for young minds.</p>
+                            </div>
+                            <p class="mt-6 text-base sm:text-lg md:text-xl font-medium hover:underline flex items-center gap-2">
+                                View Case Study 
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Project 2 -->
+                <a href="https://www.behance.net/gallery/245258651/Spectrum-Genetic-Disease-Diagnosis-Tool" class="project-link block">
+                    <div class="flex flex-col lg:flex-row-reverse lg:gap-12 lg:items-start">
+                        
+                        <div class="lg:w-1/2 h-56 sm:h-64 lg:h-80 mb-6 lg:mb-0 rounded-2xl overflow-hidden bg-gray-100">
+                            <!-- Change src to: ./assets/project2-thumbnail.jpg -->
+                            <img 
+                                src="./assets/case_study_2_thumbnail.png" 
+                                alt="Project 2 Thumbnail" 
+                                class="project-image w-full h-full object-cover transition-transform duration-500 ease-out"
+                            />
+                        </div>
+
+                        <div class="lg:w-1/2 lg:pt-4">
+                            <div class="space-y-1">
+                                <h3 class="project-title text-xl md:text-2xl font-medium">Spectrum - Diagnostic Tool</h3>
+                                <p class="project-subtitle text-base md:text-lg text-accent mt-2">Simplifying Genetic Disease Diagnosis.</p>
+                            </div>
+                            <p class="mt-6 text-base sm:text-lg md:text-xl font-medium hover:underline flex items-center gap-2">
+                                View Case Study 
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <div class="mt-12 md:mt-20 px-4 sm:px-6 md:px-8">
+        <footer class="pt-10 pb-12 md:pt-14 md:pb-16 bg-gray-200 rounded-2xl"> 
+            <div class="max-w-7xl mx-auto px-6 sm:px-10 md:px-10">
+                
+                <h2 class="text-4xl sm:text-5xl md:text-7xl font-normal mb-8 md:mb-12 inline-block text-gray-900">
+                    Get in Touch
+                </h2>
+                
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end text-gray-700">
+                    <div class="flex flex-wrap gap-x-6 gap-y-3 md:gap-x-8 md:gap-y-4 text-base md:text-lg order-1 sm:order-2 mb-6 sm:mb-0">
+                        <!-- UPDATED: Added title for tooltip, removed 'this' from onclick -->
+                        <button title="Copy email" onclick="copyEmail('geethchand@gmail.com')" class="text-gray-700 hover:text-black hover:underline flex items-center gap-1.5 transition-all">
+                            Email 
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                        </button>
+                        <a href="https://www.linkedin.com/in/geeth-chand/" class="text-gray-700 hover:text-black hover:underline" target="_blank">LinkedIn ↗</a>
+                        <a href="javascript:void(0)" class="text-gray-700 hover:text-black hover:underline">Resume ↗</a>
+                    </div>
+                    <p class="text-xs sm:text-sm mb-1 order-2 sm:order-1">&copy; Made with love, Geeth 2025</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- SPACER DIV FOR EXTRA SCROLL -->
+    <div class="h-12"></div>
+    
+    <!-- SINGLE MORPHING MOBILE NAV -->
+    <nav id="mobile-nav-morphing-bar" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden bg-white/30 backdrop-blur-lg rounded-full shadow-xl transition-all duration-300 ease-in-out overflow-hidden flex justify-center items-center" style="width: 3.5rem; height: 3.5rem;">
+        
+        <div id="mobile-nav-icon-container" class="transition-opacity duration-150">
+            <svg class="w-6 h-6 text-black opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </div>
+
+        <div id="mobile-nav-links-container" class="absolute inset-0 opacity-0 transition-opacity duration-150 flex justify-between items-center w-full h-full px-4 sm:px-6 pointer-events-none">
+            <div class="flex items-center space-x-2 whitespace-nowrap">
+                <!-- FIX: Removed pointer-events-auto to prevent invisible click interception -->
+                <a href="#top" class="text-black hover:text-accent font-light text-sm">✧ Geeth</a>
+            </div>
+            
+            <div class="flex items-center space-x-2 sm:space-x-3 whitespace-nowrap">
+                <!-- FIX: Removed pointer-events-auto to prevent invisible click interception -->
+                <a href="#projects" class="text-black hover:text-accent font-light text-sm hover:underline">My work ↗</a>
+                <a href="javascript:void(0)" class="text-black hover:text-accent font-light text-sm bg-white/50 backdrop-blur-lg rounded-full py-1.5 px-3">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- NEW: Toast Notification Element -->
+    <div id="toast-notification" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-[100] bg-gray-900 text-white px-5 py-3 rounded-full shadow-2xl flex items-center gap-2 transform translate-y-10 opacity-0 transition-all duration-300 pointer-events-none">
+        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        <span class="text-sm font-medium whitespace-nowrap">Email copied to your clipboard</span>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const desktopNav = document.getElementById('desktop-nav-bar'); 
+            const mobileMorphingBar = document.getElementById('mobile-nav-morphing-bar');
+            const mobileNavIcon = document.getElementById('mobile-nav-icon-container');
+            const mobileNavLinks = document.getElementById('mobile-nav-links-container');
+            let scrollTimer;
+            let expandTimeout;
+
+            const expandMobileNav = () => {
+                clearTimeout(scrollTimer); 
+                if (!mobileMorphingBar) return;
+                
+                mobileMorphingBar.style.width = 'calc(100vw - 2rem)';
+                mobileMorphingBar.style.height = '4rem'; 
+                
+                if (mobileNavIcon) mobileNavIcon.style.opacity = '0';
+                if (mobileNavLinks) {
+                    mobileNavLinks.style.opacity = '1';
+                    
+                    clearTimeout(expandTimeout);
+                    expandTimeout = setTimeout(() => {
+                        mobileNavLinks.classList.remove('pointer-events-none');
+                    }, 150);
+                }
+            };
+
+            const collapseMobileNav = () => {
+                if (!mobileMorphingBar) return;
+                
+                mobileMorphingBar.style.width = '3.5rem';
+                mobileMorphingBar.style.height = '3.5rem';
+                
+                if (mobileNavIcon) mobileNavIcon.style.opacity = '1';
+                if (mobileNavLinks) {
+                    mobileNavLinks.style.opacity = '0';
+                    clearTimeout(expandTimeout);
+                    mobileNavLinks.classList.add('pointer-events-none');
+                }
+            };
+
+            const startCollapseTimer = () => {
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(collapseMobileNav, 2000);
+            };
+            
+            const handleNavResize = () => {
+                if (desktopNav) { 
+                    if (window.scrollY > 20) {
+                        desktopNav.classList.add('bg-white/30', 'backdrop-blur-lg', 'shadow-lg');
+                        desktopNav.style.width = '700px'; 
+                        desktopNav.style.paddingLeft = '2.5rem'; 
+                        desktopNav.style.paddingRight = '2.5rem'; 
+                    } else {
+                        desktopNav.classList.remove('bg-white/30', 'backdrop-blur-lg', 'shadow-lg');
+                        desktopNav.style.width = 'calc(100% - 2rem)'; 
+                        desktopNav.style.paddingLeft = '4rem'; 
+                        desktopNav.style.paddingRight = '4rem'; 
+                    }
+                }
+            };
+
+            window.addEventListener('scroll', () => {
+                expandMobileNav(); 
+                startCollapseTimer(); 
+                handleNavResize();
+            });
+
+            window.addEventListener('resize', handleNavResize);
+            
+            if (mobileMorphingBar) {
+                mobileMorphingBar.addEventListener('mouseenter', expandMobileNav);
+                mobileMorphingBar.addEventListener('click', expandMobileNav);
+                mobileMorphingBar.addEventListener('mouseleave', startCollapseTimer);
+            }
+            
+            handleNavResize(); 
+        });
+
+        // NEW: Copy Email to Clipboard Function with Toast
+        window.copyEmail = function(emailToCopy) {
+            // Create a temporary text area to hold the email text
+            const textArea = document.createElement("textarea");
+            textArea.value = emailToCopy;
+            document.body.appendChild(textArea);
+            textArea.select();
+            
+            try {
+                // Execute the copy command
+                document.execCommand('copy');
+                
+                // Show Toast Notification
+                const toast = document.getElementById('toast-notification');
+                toast.classList.remove('translate-y-10', 'opacity-0');
+                
+                // Revert back to original state after 3 seconds
+                setTimeout(() => {
+                    toast.classList.add('translate-y-10', 'opacity-0');
+                }, 3000);
+            } catch (err) {
+                console.error('Failed to copy', err);
+            }
+            
+            // Clean up the temporary element
+            document.body.removeChild(textArea);
+        };
+    </script>
+</body>
+</html>
